@@ -1,9 +1,12 @@
 id: jcode.lang.typescript
 name: TypeScript Language Pack
 publisher: jcode
-version: 0.1.1
+version: 0.2.0
 type: language
-description: Coding suggestions, a basic formatter, and helpers for TypeScript.
+description: Coding suggestions, a basic formatter, helpers, and project templates for TypeScript.
+templates:
+  - react-app
+  - nextjs-app
 language:
   id: typescript
   extensions: [".ts", ".tsx", ".mts", ".cts"]
@@ -52,3 +55,18 @@ language:
       snippet: "function $1<T>($2: T): T {\n  $0\n}"
     - title: Record type
       snippet: "type $1 = Record<string, $2>;"
+
+# --- header fields merged from extension.jehm ---
+shortDescription: Coding suggestions, a basic formatter, helpers, and project templates for TypeScript.
+minJCodeVersion: 1.0.0
+targetJCodeVersion: 1.0.0
+category: Languages
+subcategory: TypeScript
+images:
+  icon: media/icon.png
+  samples: []
+  walkthrough: []
+entry:
+  manifest: extension.yaml
+  ui: null
+  libs: []

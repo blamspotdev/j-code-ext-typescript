@@ -1,0 +1,31 @@
+id: nextjs-app
+name: Next.js App
+description: A Next.js app (App Router, TypeScript).
+requires:
+  - nodejs
+recipe:
+  - label: Scaffold Next.js app
+    workdir: "{{hostStaging}}"
+    run: npx --yes create-next-app@latest app --ts --eslint --no-tailwind --app --no-src-dir --import-alias "@/*" --use-npm --no-turbopack </dev/null
+  - label: Copy app source into project
+    run: cd "{{hostStaging}}/app" && tar --exclude=node_modules --exclude=.next -cf - . | (cd "{{projectDir}}" && tar -xf -)
+  - label: Configure Build & Run
+    run: |
+      mkdir -p "{{projectDir}}/.jcode"
+      cat > "{{projectDir}}/.jcode/run.yaml" <<'YAML'
+      version: 1
+      name: Next.js (dev)
+      readyPort: 3000
+      terminals:
+        - label: Web
+          command: |
+            clear
+            set -e
+            SRC="{{projectDir}}"
+            STAGE="$HOME/.jcode-run/{{name}}-web"
+            echo '== J Code: Next.js dev server =='
+            rm -rf "$STAGE" && mkdir -p "$STAGE" && cp -a "$SRC/." "$STAGE/"
+            cd "$STAGE"
+            npm install
+            npm run dev -- -H 0.0.0.0 -p 3000
+      YAML
