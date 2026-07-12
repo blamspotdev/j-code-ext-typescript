@@ -3,6 +3,11 @@ name: TypeScript Language Pack
 publisher: jcode
 version: 0.2.0
 type: language
+requires:
+  lsps: [typescript-language-server]
+  sdks: [nodejs]
+suggests:
+  dbg: [js-debug]
 description: Coding suggestions, a basic formatter, helpers, and project templates for TypeScript.
 templates:
   - react-app
