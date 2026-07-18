@@ -1,7 +1,7 @@
 id: jcode.lang.typescript
-name: TypeScript Language Pack
+name: TypeScript Dev Pack
 publisher: jcode
-version: 0.2.0
+version: 0.2.1
 type: language
 requires:
   lsps: [typescript-language-server]
