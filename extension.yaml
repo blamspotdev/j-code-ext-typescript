@@ -1,12 +1,12 @@
 id: jcode.lang.typescript
 name: TypeScript Dev Pack
 publisher: jcode
-version: 0.2.1
+version: 0.2.2
 type: language
 requires:
   lsps: [typescript-language-server]
-  sdks: [nodejs]
 suggests:
+  sdks: [nodejs]
   dbg: [js-debug]
 description: Coding suggestions, a basic formatter, helpers, and project templates for TypeScript.
 templates:
