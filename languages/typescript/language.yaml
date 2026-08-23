@@ -1,0 +1,47 @@
+id: typescript
+extensions: [".ts", ".tsx", ".mts", ".cts"]
+comment:
+  line: "//"
+  blockStart: "/*"
+  blockEnd: "*/"
+strings: ["\"", "'", "`"]
+keywords: [const, let, var, function, return, if, else, for, while, do, switch, case,
+  default, break, continue, new, class, extends, super, this, typeof, instanceof, in,
+  of, try, catch, finally, throw, async, await, yield, import, export, from, as, null,
+  undefined, true, false, delete, void, interface, type, enum, namespace, declare,
+  implements, public, private, protected, readonly, abstract, keyof, infer, static,
+  get, set]
+types: [string, number, boolean, any, unknown, never, void, object, symbol, bigint,
+  Record, Partial, Readonly, Required, Pick, Omit, Array, Promise, Map, Set, Date]
+formatter:
+  command: "npx --yes prettier --write {{file}} 2>/dev/null || true"
+  indent: 2
+  trimTrailingWhitespace: true
+  insertFinalNewline: true
+completions:
+  - label: cl
+    detail: console.log
+    insert: "console.log($0);"
+  - label: int
+    detail: interface
+    insert: "interface $1 {\n  $0\n}"
+  - label: typ
+    detail: type alias
+    insert: "type $1 = $0;"
+  - label: fn
+    detail: typed function
+    insert: "function $1($2): $3 {\n  $0\n}"
+  - label: af
+    detail: typed arrow function
+    insert: "const $1 = ($2): $3 => {\n  $0\n};"
+  - label: enum
+    detail: enum
+    insert: "enum $1 {\n  $0\n}"
+  - label: imp
+    detail: import
+    insert: "import { $1 } from '$2';"
+helpers:
+  - title: Generic function
+    snippet: "function $1<T>($2: T): T {\n  $0\n}"
+  - title: Record type
+    snippet: "type $1 = Record<string, $2>;"
